@@ -7,8 +7,10 @@ function generateAndInsertDivs(numDivs) {
         newDiv.setAttribute("id", divId);
         newDiv.classList.add("gridSquare")
 
-        newDiv.addEventListener("mouseover", () => {
-            newDiv.classList.add("gridHover");
+        newDiv.addEventListener("mouseover", (e) => {
+            const element = e.target;
+            
+            randomlyAssignGridColor(element);
         });
 
         container.appendChild(newDiv);
@@ -44,4 +46,12 @@ function adjustGridSize(numSquaresPerSide) {
         element.style.minHeight = newGridSquareDimension;
         element.style.minWidth = newGridSquareDimension;
     });
+}
+
+function randomlyAssignGridColor(element) {
+    const redValue = Math.floor(Math.random() * 255);
+    const blueValue = Math.floor(Math.random() * 255);
+    const greenValue = Math.floor(Math.random() * 255);
+
+    element.style.backgroundColor = `rgb(${redValue},${blueValue},${greenValue})`;
 }
