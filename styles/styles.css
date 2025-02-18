@@ -3,15 +3,33 @@
     padding: 0;
 }
 
+#outerContainer { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 50px;
+}
+
 #container {
     display: flex;
     padding: 25px;
     width: 1000px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .gridSquare {
     border: 1px solid rgb(104, 104, 104);
     opacity: 10%;
+}
+
+#userInput {
+    background-color: #4681f4;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-size: 50px;
 }
 
