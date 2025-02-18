@@ -12,5 +12,6 @@
 
 .gridSquare {
     border: 1px solid rgb(104, 104, 104);
+    opacity: 10%;
 }
 

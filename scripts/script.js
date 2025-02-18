@@ -11,6 +11,7 @@ function generateAndInsertDivs(numDivs) {
             const element = e.target;
             
             randomlyAssignGridColor(element);
+            updateOpacity(element);
         });
 
         container.appendChild(newDiv);
@@ -37,6 +38,7 @@ function adjustGridSize(numSquaresPerSide) {
 
     generateAndInsertDivs(numSquaresPerSide * numSquaresPerSide);
 
+    //minus 2 because border of 1px on every side of gridSquare.
     let newGridSquareDimension = ((1000 / numSquaresPerSide) - (2)) + "px";
     const gridSquares = document.querySelectorAll(".gridSquare")
     console.log(newGridSquareDimension);
@@ -54,4 +56,17 @@ function randomlyAssignGridColor(element) {
     const greenValue = Math.floor(Math.random() * 255);
 
     element.style.backgroundColor = `rgb(${redValue},${blueValue},${greenValue})`;
+}
+
+function updateOpacity(element){
+    let currentOpacity = window
+        .getComputedStyle(element)
+        .getPropertyValue("opacity");
+    
+    let newOpacity = parseFloat(currentOpacity) + 0.1; //increase by 10%
+    if(newOpacity > 1) {
+        newOpacity = 1; //max 100% opacity
+    }
+    
+    element.style.opacity = newOpacity;
 }
