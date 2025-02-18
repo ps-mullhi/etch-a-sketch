@@ -4,18 +4,15 @@ function generateAndInsertDivs(numDivs) {
     for(let i = 0; i < numDivs; i++){
         let newDiv = document.createElement("div");
         let divId = "div" + (i+1);
-        newDiv.classList.add("gridDiv")
         newDiv.setAttribute("id", divId);
+        newDiv.classList.add("gridSquare")
+
         newDiv.addEventListener("mouseover", () => {
             newDiv.classList.add("gridHover");
         });
 
         container.appendChild(newDiv);
     }
-}
-
-function main() {
-    generateAndInsertDivs(20);
 }
 
 const gridSizeButton = document.querySelector("#userInput");
@@ -38,10 +35,13 @@ function adjustGridSize(numSquaresPerSide) {
 
     generateAndInsertDivs(numSquaresPerSide * numSquaresPerSide);
 
-    let containerWidth = numSquaresPerSide * 10 + (numSquaresPerSide * 2);
-    container.style.width = containerWidth + "px";
+    let newGridSquareDimension = ((1000 / numSquaresPerSide) - (2)) + "px";
+    const gridSquares = document.querySelectorAll(".gridSquare")
+    console.log(newGridSquareDimension);
+    
 
+    gridSquares.forEach((element) => {
+        element.style.minHeight = newGridSquareDimension;
+        element.style.minWidth = newGridSquareDimension;
+    });
 }
-
-
-main();
